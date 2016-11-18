@@ -24,7 +24,7 @@ public class TaskDAO {
         this.session = factory.openSession();
     }
 
-    public List<Task> getAllTasks() throws SQLException {
+    public List<Task> getAllTasks(){
         Criteria criteria = session.createCriteria(Task.class);
         List<Task> list = (List<Task>) criteria.list();
         session.close();
