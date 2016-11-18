@@ -45,6 +45,5 @@ public class HomePageServlet extends HttpServlet {
         req.setAttribute("taskDoneList", taskDoneList);
         req.setAttribute("listTasks", listDAO.getAllListTasks());
         dispatcher.forward(req, resp);
-        resp.sendRedirect("/home");
     }
 }

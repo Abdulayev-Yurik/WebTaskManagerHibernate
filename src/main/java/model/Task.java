@@ -29,7 +29,7 @@ public class Task {
     @Column(name = "due_date")
     private String dueDate;
 
-    @Column(name = "isActive")
+    @Column(name = "isActive", columnDefinition = "true")
     private Boolean isActive;
 
     @Column(name = "listId", insertable = false, updatable = false)
@@ -72,11 +72,12 @@ public class Task {
     public Task() {
     }
 
-    public Task(String title, String details, int listId, String dueDate) {
+    public Task(String title, String details, int listId, String dueDate, boolean isActive) {
         this.title = title;
         this.details = details;
         this.listId = listId;
         this.dueDate = dueDate;
+        this.isActive = isActive;
     }
 
     @Column(name = "title")
@@ -106,7 +107,7 @@ public class Task {
         this.details = details;
     }
 
-    @Column(name = "isActive")
+    @Column(name = "isActive", columnDefinition = "tinyint default true")
     public boolean isActive() {
         return isActive;
     }

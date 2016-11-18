@@ -33,7 +33,7 @@ public class TaskDAO {
 
     public List<Task> getTasksFromList(String listId) {
         Criteria criteria = session.createCriteria(ListTasks.class)
-                .add(eq("id", listId));
+                .add(eq("id", parseInt(listId))); // FIXME: 11/18/16 have empty
         List<Task> taskList = (List<Task>) criteria.list();
         session.close();
         return taskList;
@@ -42,7 +42,7 @@ public class TaskDAO {
 
     public void addNewTask(String title, String details, int listId, String dueDate) {
         session.beginTransaction();
-        session.save(new Task(title, details, listId, dueDate));
+        session.save(new Task(title, details, listId, dueDate, true));
         session.getTransaction().commit();
         session.close();
     }
