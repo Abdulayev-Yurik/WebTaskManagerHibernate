@@ -61,7 +61,7 @@ public class TaskDAO {
         session.beginTransaction();
         Task task = (Task) session.createCriteria(Task.class)
                 .add(eq("id", taskId)).uniqueResult();
-        task.setActive(!isActive);
+        task.setActive(isActive);
         session.update(task);
         session.getTransaction().commit();
         session.close();

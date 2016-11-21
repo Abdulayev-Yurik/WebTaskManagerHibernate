@@ -20,7 +20,7 @@ public class Task {
     @JoinColumn(name = "listId")
     private ListTasks listTasks;
 
-    @Column(name = "title", insertable = false, updatable = false, columnDefinition = "empty")
+    @Column(name = "title")
     private String taskTitle;
 
     @Column(name = "details")
