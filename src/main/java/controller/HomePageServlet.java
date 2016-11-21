@@ -41,7 +41,7 @@ public class HomePageServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/home.jsp");
         req.setAttribute("taskActiveList", taskActiveList);
         req.setAttribute("taskDoneList", taskDoneList);
-        req.setAttribute("listTasks", listDAO.getAllListTasks());
+        req.setAttribute("taskLists", listDAO.getAllListTasks());
         req.setAttribute("listId", listId);
         dispatcher.forward(req, resp);
     }

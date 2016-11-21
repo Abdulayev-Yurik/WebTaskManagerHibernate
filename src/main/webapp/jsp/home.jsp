@@ -1,4 +1,4 @@
-<jsp:useBean id="listTasks" scope="request" type="java.util.List<model.ListTasks>"/>
+<jsp:useBean id="taskLists" scope="request" type="java.util.List<model.ListTasks>"/>
 <jsp:useBean id="taskActiveList" scope="request" type="java.util.List<model.Task>"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -11,9 +11,9 @@
 
     <form action="/home">
         <select name="listId" >
-            <option value="">All Tasks</option>
-            <c:forEach items="${listTasks}" var="list">
-                <option value="${list.id}">${list.listName}</option>
+            <option value="0">All Tasks</option>
+            <c:forEach items="${taskLists}" var="taskList">
+                <option value="${taskList.id}" <c:if test="${taskList.id == listId}">selected</c:if> >${taskList.listName}</option>
             </c:forEach>
         </select>
         <input type="submit" value="view list">

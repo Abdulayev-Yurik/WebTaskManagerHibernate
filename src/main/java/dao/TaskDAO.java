@@ -30,10 +30,10 @@ public class TaskDAO {
     }
 
     public List<Task> getTasksFromList(String listId) {
-        if (listId.isEmpty())
+        if (listId.equals("0"))
             return getAllTasks();
         Criteria criteria = session.createCriteria(Task.class)
-                .add(eq("id", listId)); // FIXME: 11/18/16 have empty
+                .add(eq("listId", parseInt(listId)));
         List<Task> taskList = (List<Task>) criteria.list();
         session.close();
         return taskList;

@@ -10,8 +10,8 @@
     <input type="text" name="dueDate" maxlength="10" placeholder="Add due date '2016-12-14'" required><br>
     <textarea name="details" placeholder="Enter details"></textarea><br>
     Enter List : <select name="listId">
-    <c:forEach items="${lists}" var="list">
-        <option value="${list.id}">${list.listName}</option>
+    <c:forEach items="${lists}" var="taskList">
+        <option value="${taskList.id}">${taskList.listName}</option>
     </c:forEach>
     </select><br>
 
