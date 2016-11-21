@@ -14,14 +14,14 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "taskId", updatable = false, insertable = false)
+    @Column(name = "taskId")
     private Integer taskId;
 
     @Column(name = "message_body")
     private String messageBody;
 
     @ManyToOne(fetch =  FetchType.LAZY)
-    @JoinColumn(name = "taskId")
+    @JoinColumn(name = "taskId", updatable = false, insertable = false)
     private Task task;
 
     public Message(Integer taskId, String messageBody) {
