@@ -11,7 +11,7 @@ public class Message {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "taskId", updatable = false, insertable = false)
@@ -25,12 +25,6 @@ public class Message {
     private Task task;
 
     public Message(Integer taskId, String messageBody) {
-        this.taskId = taskId;
-        this.messageBody = messageBody;
-    }
-
-    public Message(int id, int taskId, String messageBody) {
-        this.id = id;
         this.taskId = taskId;
         this.messageBody = messageBody;
     }

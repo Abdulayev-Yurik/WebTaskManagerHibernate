@@ -35,7 +35,7 @@ public class Task {
     @Column(name = "listId")
     private Integer listId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
     private List<Message> messages = new ArrayList();
 
     public Task(String taskId, String taskTitle) {

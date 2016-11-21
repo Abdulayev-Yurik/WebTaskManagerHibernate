@@ -96,7 +96,7 @@ public class TaskDAO {
 
     public void deleteMessage(String messageId) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Message.class).add(eq("id", messageId));
+        Criteria criteria = session.createCriteria(Message.class).add(eq("id", parseInt(messageId)));
         Message message = (Message) criteria.uniqueResult();
         session.delete(message);
         session.getTransaction().commit();

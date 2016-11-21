@@ -10,10 +10,11 @@
 <div class="page">
 
     <form action="/home">
-        <select name="listId" >
+        <select name="listId">
             <option value="0">All Tasks</option>
             <c:forEach items="${taskLists}" var="taskList">
-                <option value="${taskList.id}" <c:if test="${taskList.id == listId}">selected</c:if> >${taskList.listName}</option>
+                <option value="${taskList.id}"
+                        <c:if test="${taskList.id == listId}">selected</c:if> >${taskList.listName}</option>
             </c:forEach>
         </select>
         <input type="submit" value="view list">
@@ -40,7 +41,8 @@
                         </c:if>
                         <td>
                             <a href="/details?task=${task.taskId}">
-                                <i class="material-icons" style="color: green; font-size:14px">announcement</i></a>
+                                <i class="material-icons" style="color: green; font-size:14px">announcement</i>
+                                    ${task.messagesValues}</a>
                         </td>
                         <td>
                             <a href="/delete?task=${task.taskId}">
@@ -73,7 +75,8 @@
                         </c:if>
                         <td>
                             <a href="/details?task=${task.taskId}">
-                                <i class="material-icons" style="color: green; font-size:14px">announcement</i></a>
+                                <i class="material-icons" style="color: green; font-size:14px">announcement</i>
+                                    ${task.messagesValues}</a>
                         </td>
                         <td>
                             <a href="/delete?task=${task.taskId}">
