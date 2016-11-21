@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by employee on 11/17/16.
+ * Created by employee on 11/21/16.
  */
-@WebServlet({"/newList"})
-public class NewListServlet extends HttpServlet {
+@WebServlet({"/deleteList"})
+public class DeleteTaskList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String title = req.getParameter("title");
+        String listId = req.getParameter("listId");
         TaskListDAO taskListDAO = new TaskListDAO((SessionFactory) getServletContext().getAttribute("factory"));
-        taskListDAO.createNewList(title);
-        resp.sendRedirect("/home");
+        taskListDAO.deleteTaskList(listId);
+        resp.sendRedirect("/taskLists");
     }
 }

@@ -1,7 +1,7 @@
 package console;
 
-import dao.ListDAO;
-import model.ListTasks;
+import dao.TaskListDAO;
+import model.TaskList;
 import model.Task;
 import org.hibernate.SessionFactory;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class ConsoleRunner {
 
     private SessionFactory sessionFactory;
-    private ListDAO listDAO;
+    private TaskListDAO taskListDAO;
 
     public ConsoleRunner(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -25,10 +25,10 @@ public class ConsoleRunner {
     }
 
     private void viewAllTasks() {
-        listDAO = new ListDAO(sessionFactory);
-        List<ListTasks> list = listDAO.getAllListTasks();
+        taskListDAO = new TaskListDAO(sessionFactory);
+        List<TaskList> list = taskListDAO.getAllListTasks();
         System.out.println("----All Tasks----");
-        for (ListTasks listTask : list) {
+        for (TaskList listTask : list) {
             System.out.println(listTask.getId() + ") " + listTask.getListName());
             for (Task task : listTask.getTasks()) {
                 System.out.println("    " + task.getTaskTitle());

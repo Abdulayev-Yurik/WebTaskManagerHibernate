@@ -1,8 +1,8 @@
 package controller;
 
-import dao.ListDAO;
+import dao.TaskListDAO;
 import dao.TaskDAO;
-import model.ListTasks;
+import model.TaskList;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -29,7 +27,7 @@ public class NewTaskServlet extends HttpServlet {
         String title = req.getParameter("title");
             if (title == null) {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/add_task.jsp");
-                List<ListTasks> listTasks = new ListDAO((SessionFactory) getServletContext().getAttribute("factory"))
+                List<TaskList> listTasks = new TaskListDAO((SessionFactory) getServletContext().getAttribute("factory"))
                         .getAllListTasks();
                 req.setAttribute("lists", listTasks);
                 dispatcher.forward(req, resp);

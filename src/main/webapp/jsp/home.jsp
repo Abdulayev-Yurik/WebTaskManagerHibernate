@@ -1,4 +1,4 @@
-<jsp:useBean id="taskLists" scope="request" type="java.util.List<model.ListTasks>"/>
+<jsp:useBean id="taskLists" scope="request" type="java.util.List<model.TaskList>"/>
 <jsp:useBean id="taskActiveList" scope="request" type="java.util.List<model.Task>"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -19,7 +19,7 @@
         <input type="submit" value="view list">
     </form>
     <input type="submit" value="Add Task" onclick="window.location='/newTask'">
-    <input type="submit" value="Add List" onclick="window.location='jsp/add_new_list.jsp'"><br>
+    <input type="submit" value="Task Lists" onclick="window.location='/taskLists'"><br>
     <c:if test="${taskActiveList.size() != 0}">
         <div class="activeList card-1">
             <table>

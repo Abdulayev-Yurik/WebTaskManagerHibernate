@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "list_tasks")
-public class ListTasks {
+public class TaskList {
 
     @Id
     @Column(name = "id")
@@ -22,16 +22,16 @@ public class ListTasks {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "listTasks")
     private List<Task> tasks = new ArrayList();
 
-    public ListTasks(int id, String listName) {
+    public TaskList(int id, String listName) {
         this.id = id;
         this.listName = listName;
     }
 
-    public ListTasks(String listName) {
+    public TaskList(String listName) {
         this.listName = listName;
     }
 
-    public ListTasks() {
+    public TaskList() {
     }
 
     public int getId() {

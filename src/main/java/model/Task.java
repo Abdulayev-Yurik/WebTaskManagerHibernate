@@ -18,7 +18,7 @@ public class Task {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "listId", insertable = false, updatable = false )
-    private ListTasks listTasks;
+    private TaskList listTasks;
 
     @Column(name = "title")
     private String taskTitle;
@@ -137,11 +137,11 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public ListTasks getListTasks() {
+    public TaskList getListTasks() {
         return listTasks;
     }
 
-    public void setListTasks(ListTasks listTasks) {
+    public void setListTasks(TaskList listTasks) {
         this.listTasks = listTasks;
     }
 }
