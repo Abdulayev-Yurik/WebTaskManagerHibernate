@@ -13,14 +13,14 @@ public class Task {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String taskId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "listId")
     private ListTasks listTasks;
 
-    @Column(name = "title", insertable = false, updatable = false)
+    @Column(name = "title", insertable = false, updatable = false, columnDefinition = "empty")
     private String taskTitle;
 
     @Column(name = "details")
@@ -37,9 +37,6 @@ public class Task {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
     private List<Message> messages = new ArrayList();
-
-    private String title;
-
 
     public Task(String taskId, String taskTitle) {
         this.taskId = taskId;
@@ -62,7 +59,7 @@ public class Task {
         this.listId = listId;
     }
 
-    public Task(String taskTitle, String details, boolean isActive, int listId) {
+    public Task(String taskTitle, String details, boolean isActive, Integer listId) {
         this.taskTitle = taskTitle;
         this.details = details;
         this.isActive = isActive;
@@ -73,7 +70,7 @@ public class Task {
     }
 
     public Task(String title, String details, int listId, String dueDate, boolean isActive) {
-        this.title = title;
+        this.taskTitle = title;
         this.details = details;
         this.listId = listId;
         this.dueDate = dueDate;

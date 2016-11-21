@@ -10,7 +10,7 @@
 <div class="page">
 
     <form action="/home">
-        <select name="listId">
+        <select name="listId" >
             <option value="">All Tasks</option>
             <c:forEach items="${listTasks}" var="list">
                 <option value="${list.id}">${list.listName}</option>

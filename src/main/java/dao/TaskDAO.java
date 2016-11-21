@@ -1,13 +1,11 @@
 package dao;
 
-import model.ListTasks;
 import model.Message;
 import model.Task;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -32,7 +30,8 @@ public class TaskDAO {
     }
 
     public List<Task> getTasksFromList(String listId) {
-        listId = listId.isEmpty() ? "0" : listId;
+        if (listId.isEmpty())
+            return getAllTasks();
         Criteria criteria = session.createCriteria(Task.class)
                 .add(eq("id", listId)); // FIXME: 11/18/16 have empty
         List<Task> taskList = (List<Task>) criteria.list();
@@ -43,7 +42,8 @@ public class TaskDAO {
 
     public void addNewTask(String title, String details, int listId, String dueDate) {
         session.beginTransaction();
-        session.save(new Task(title, details, listId, dueDate, true));
+        Task task = new Task(title, details, listId, dueDate, true);
+        session.save(task);
         session.getTransaction().commit();
         session.close();
     }
