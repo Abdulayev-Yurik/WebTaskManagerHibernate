@@ -17,7 +17,7 @@ public class Task {
     private String taskId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "listId")
+    @JoinColumn(name = "listId", insertable = false, updatable = false )
     private ListTasks listTasks;
 
     @Column(name = "title")
@@ -32,7 +32,7 @@ public class Task {
     @Column(name = "isActive", columnDefinition = "true")
     private Boolean isActive;
 
-    @Column(name = "listId", insertable = false, updatable = false)
+    @Column(name = "listId")
     private Integer listId;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")

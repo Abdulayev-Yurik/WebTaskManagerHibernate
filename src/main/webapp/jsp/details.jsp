@@ -27,6 +27,7 @@
             <td>Task dueDate: ${task.dueDate}</td>
         </tr>
     </c:if>
+    <tr><td>Task from : ${task.listTasks.listName} </td></tr>
     <c:if test="${messages.size() != 0}">
         <tr>
             <td>Task messages:</td>
