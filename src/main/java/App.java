@@ -1,3 +1,4 @@
+import org.apache.catalina.Globals;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;
 import org.apache.catalina.core.StandardContext;
@@ -22,6 +23,7 @@ public class App {
 
         File webContentFolder = new File("src/main/webapp/");
         StandardContext ctx = (StandardContext) tomcat.addWebapp("", webContentFolder.getAbsolutePath());
+//        ctx.getServletContext().setAttribute(Globals.ALT_DD_ATTR, "src/main/webapp/WEB-INF/web.xml");
         ctx.setParentClassLoader(App.class.getClassLoader());
 
         ErrorPage page = new ErrorPage();

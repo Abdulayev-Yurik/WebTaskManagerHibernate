@@ -17,6 +17,11 @@ import java.io.IOException;
 public class NewListServlet extends HttpServlet {
 
     @Override
+    public void init() throws ServletException {
+//        getSession factory
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String title = req.getParameter("title");
         TaskListDAO taskListDAO = new TaskListDAO((SessionFactory) getServletContext().getAttribute("factory"));

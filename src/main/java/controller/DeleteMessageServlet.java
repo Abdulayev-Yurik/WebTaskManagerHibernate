@@ -1,5 +1,6 @@
 package controller;
 
+import com.sun.net.httpserver.Headers;
 import dao.TaskDAO;
 import org.hibernate.SessionFactory;
 
@@ -22,7 +23,7 @@ public class DeleteMessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String messageId = req.getParameter("messageId");
         String taskId = req.getParameter("taskId");
-
+        
         TaskDAO taskDAO = new TaskDAO((SessionFactory) getServletContext().getAttribute("factory"));
         taskDAO.deleteMessage(messageId);
         resp.sendRedirect("/details?task=" + taskId);
