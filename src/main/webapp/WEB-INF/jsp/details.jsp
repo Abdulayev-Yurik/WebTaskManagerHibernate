@@ -1,16 +1,17 @@
-<jsp:useBean id="task" scope="request" type="model.Task"/>
-<jsp:useBean id="messages" scope="request" type="java.util.List<model.Message>"/>
+<jsp:useBean id="task" scope="request" type="taskmanager.model.Task"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="/resources/css/mystyle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/resources/js/lib/jquery-2.1.0.min.js"></script>
+    <script src="/resources/js/main.js"></script>
 </head>
 <body>
 <a href="/home">Back</a>
-<form action="/messages">
+<form action="/message" method="post">
     <input type="hidden" name="taskId" value="${task.taskId}">
-    <input type="text" placeholder="Enter new message" name="n_message" required>
+    <input type="text" placeholder="Enter new message" name="mBody" required>
     <input type="submit" value="Add message">
 </form>
 <table>
@@ -28,17 +29,13 @@
         </tr>
     </c:if>
     <tr><td>Task from : ${task.listTasks.listName} </td></tr>
-    <c:if test="${messages.size() != 0}">
-        <tr>
-            <td>Task messages:</td>
-        </tr>
-        <c:forEach items="${messages}" var="message">
+    <c:if test="${task.messagesValues != 0}">
+        <tr><td>Task messages:</td></tr>
+        <c:forEach items="${task.messages}" var="message">
             <tr>
+                <td>${message.messageBody}</td>
                 <td>
-                        ${message.messageBody}
-                </td>
-                <td>
-                    <a href="/delMessages?messageId=${message.id}&taskId=${task.taskId}">
+                    <a href="" onclick="deleteMessage(${message.id}, ${task.taskId})">
                         <i class="material-icons" style="color: red; font-size:20px">delete_forever</i>
                     </a>
                 </td>

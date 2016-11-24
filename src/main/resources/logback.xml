@@ -10,7 +10,7 @@
 
 	<appender name="FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>c:/mkyongapp.log</file>
+		<file>logs/spring.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
 		</encoder>
@@ -31,9 +31,11 @@
 	<logger name="org.hibernate.type" level="WARN" />
 	<logger name="org.hibernate" level="WARN" />
 
-	<root level="INFO">
-		<!-- <appender-ref ref="FILE" /> -->
-		<appender-ref ref="STDOUT" />
-	</root>
+	<!--<root level="INFO">-->
+		 <!--<appender-ref ref="FILE" />-->
+	<!--</root>-->
 
+	<!--<root level="ERROR">-->
+		<!--<appender-ref ref="STDOUT" />-->
+	<!--</root>-->
 </configuration>
