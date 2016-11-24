@@ -1,6 +1,6 @@
 package controller;
 
-import dao.ListDAO;
+import dao.TaskListDAO;
 import dao.TaskDAO;
 import model.Task;
 import org.hibernate.SessionFactory;
@@ -25,7 +25,7 @@ public class HomePageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String listId = req.getParameter("listId");
         TaskDAO taskDAO = new TaskDAO((SessionFactory) getServletContext().getAttribute("factory"));
-        ListDAO listDAO = new ListDAO((SessionFactory) getServletContext().getAttribute("factory"));
+        TaskListDAO taskListDAO = new TaskListDAO((SessionFactory) getServletContext().getAttribute("factory"));
         List<Task> taskActiveList = new ArrayList();
         List<Task> taskDoneList = new ArrayList();
 
@@ -41,7 +41,7 @@ public class HomePageServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/jsp/home.jsp");
         req.setAttribute("taskActiveList", taskActiveList);
         req.setAttribute("taskDoneList", taskDoneList);
-        req.setAttribute("listTasks", listDAO.getAllListTasks());
+        req.setAttribute("taskLists", taskListDAO.getAllListTasks());
         req.setAttribute("listId", listId);
         dispatcher.forward(req, resp);
     }

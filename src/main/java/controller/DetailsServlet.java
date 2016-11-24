@@ -34,6 +34,5 @@ public class DetailsServlet extends HttpServlet {
             req.setAttribute("task", task);
             req.setAttribute("messages", messageList);
             dispatcher.forward(req, resp);
-            resp.sendRedirect("/home");
     }
 }

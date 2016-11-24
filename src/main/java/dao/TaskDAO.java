@@ -30,10 +30,10 @@ public class TaskDAO {
     }
 
     public List<Task> getTasksFromList(String listId) {
-        if (listId.isEmpty())
+        if (listId.equals("0"))
             return getAllTasks();
         Criteria criteria = session.createCriteria(Task.class)
-                .add(eq("id", listId)); // FIXME: 11/18/16 have empty
+                .add(eq("listId", parseInt(listId)));
         List<Task> taskList = (List<Task>) criteria.list();
         session.close();
         return taskList;
@@ -61,7 +61,7 @@ public class TaskDAO {
         session.beginTransaction();
         Task task = (Task) session.createCriteria(Task.class)
                 .add(eq("id", taskId)).uniqueResult();
-        task.setActive(!isActive);
+        task.setActive(isActive);
         session.update(task);
         session.getTransaction().commit();
         session.close();
@@ -96,7 +96,7 @@ public class TaskDAO {
 
     public void deleteMessage(String messageId) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Message.class).add(eq("id", messageId));
+        Criteria criteria = session.createCriteria(Message.class).add(eq("id", parseInt(messageId)));
         Message message = (Message) criteria.uniqueResult();
         session.delete(message);
         session.getTransaction().commit();

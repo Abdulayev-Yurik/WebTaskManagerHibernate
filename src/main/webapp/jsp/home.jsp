@@ -1,4 +1,4 @@
-<jsp:useBean id="listTasks" scope="request" type="java.util.List<model.ListTasks>"/>
+<jsp:useBean id="taskLists" scope="request" type="java.util.List<model.TaskList>"/>
 <jsp:useBean id="taskActiveList" scope="request" type="java.util.List<model.Task>"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -10,16 +10,17 @@
 <div class="page">
 
     <form action="/home">
-        <select name="listId" >
-            <option value="">All Tasks</option>
-            <c:forEach items="${listTasks}" var="list">
-                <option value="${list.id}">${list.listName}</option>
+        <select name="listId">
+            <option value="0">All Tasks</option>
+            <c:forEach items="${taskLists}" var="taskList">
+                <option value="${taskList.id}"
+                        <c:if test="${taskList.id == listId}">selected</c:if> >${taskList.listName}</option>
             </c:forEach>
         </select>
         <input type="submit" value="view list">
     </form>
     <input type="submit" value="Add Task" onclick="window.location='/newTask'">
-    <input type="submit" value="Add List" onclick="window.location='jsp/add_new_list.jsp'"><br>
+    <input type="submit" value="Task Lists" onclick="window.location='/taskLists'"><br>
     <c:if test="${taskActiveList.size() != 0}">
         <div class="activeList card-1">
             <table>
@@ -40,7 +41,8 @@
                         </c:if>
                         <td>
                             <a href="/details?task=${task.taskId}">
-                                <i class="material-icons" style="color: green; font-size:14px">announcement</i></a>
+                                <i class="material-icons" style="color: green; font-size:14px">announcement</i>
+                                    ${task.messagesValues}</a>
                         </td>
                         <td>
                             <a href="/delete?task=${task.taskId}">
@@ -73,7 +75,8 @@
                         </c:if>
                         <td>
                             <a href="/details?task=${task.taskId}">
-                                <i class="material-icons" style="color: green; font-size:14px">announcement</i></a>
+                                <i class="material-icons" style="color: green; font-size:14px">announcement</i>
+                                    ${task.messagesValues}</a>
                         </td>
                         <td>
                             <a href="/delete?task=${task.taskId}">

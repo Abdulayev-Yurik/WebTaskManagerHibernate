@@ -17,10 +17,10 @@ public class Task {
     private String taskId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "listId")
-    private ListTasks listTasks;
+    @JoinColumn(name = "listId", insertable = false, updatable = false )
+    private TaskList listTasks;
 
-    @Column(name = "title", insertable = false, updatable = false, columnDefinition = "empty")
+    @Column(name = "title")
     private String taskTitle;
 
     @Column(name = "details")
@@ -32,10 +32,10 @@ public class Task {
     @Column(name = "isActive", columnDefinition = "true")
     private Boolean isActive;
 
-    @Column(name = "listId", insertable = false, updatable = false)
+    @Column(name = "listId")
     private Integer listId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
     private List<Message> messages = new ArrayList();
 
     public Task(String taskId, String taskTitle) {
@@ -137,11 +137,11 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public ListTasks getListTasks() {
+    public TaskList getListTasks() {
         return listTasks;
     }
 
-    public void setListTasks(ListTasks listTasks) {
+    public void setListTasks(TaskList listTasks) {
         this.listTasks = listTasks;
     }
 }
