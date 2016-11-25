@@ -78,4 +78,12 @@ public class TaskDAO {
         return task.getMessages();
     }
 
+    public void updateTask(String id, String title, String det, String dueDate) {
+        Session session = sessionFactory.getCurrentSession();
+        Task task = (Task) session.createCriteria(Task.class).add(eq("id", id)).uniqueResult();
+        task.setTaskTitle(title);
+        task.setDetails(det);
+        task.setDueDate(dueDate);
+        session.save(task);
+    }
 }

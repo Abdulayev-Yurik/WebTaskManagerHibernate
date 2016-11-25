@@ -73,4 +73,8 @@ public class TaskService {
     public Task getTaskById(String taskId) {
         return taskDAO.getTaskById(taskId);
     }
+
+    public void updateTask(String id, String title, String det, String dueDate) {
+        taskDAO.updateTask(id, title, det, dueDate);
+    }
 }

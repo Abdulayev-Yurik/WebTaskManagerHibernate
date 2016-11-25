@@ -58,5 +58,13 @@ public class TaskController {
         return "redirect:/home";
     }
 
+    @RequestMapping(value = "", method = RequestMethod.PATCH)
+    void updateTask(@RequestParam("id")String id,
+                    @RequestParam("title")String title,
+                    @RequestParam("details")String det,
+                    @RequestParam("date")String dueDate){
+        taskService.updateTask(id, title, det, dueDate);
+    }
+
 
 }

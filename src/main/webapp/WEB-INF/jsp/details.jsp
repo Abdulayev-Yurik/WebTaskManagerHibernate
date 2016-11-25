@@ -16,18 +16,33 @@
     <input type="text" placeholder="Enter new message" name="mBody" required>
     <input type="submit" value="Add message">
 </form>
+<input type="submit" id="config_btn" value="Edit inf" onclick="viewEditTask(${task.taskId})">
+<input type="submit" value="Save inf" onclick="saveEditedTask(${task.taskId})">
 <table>
     <tr>
-        <td>Task title: ${task.taskTitle}</td>
+        <td>Task title:
+            <input type="button" id="viewT" value="${task.taskTitle}"
+                   style="border: none; background: none">
+            <input type="text" id="editT"
+                   value="${task.taskTitle}" style="display: none">
+        </td>
     </tr>
     <c:if test="${!task.details.isEmpty()}">
         <tr>
-            <td>Task details: ${task.details}</td>
+            <td>Task details:
+                <input type="button" id="viewD" value="${task.details}"
+                       style="border: none; background: none">
+                <input type="text" id="editD"
+                       value="${task.details}" style="display: none"></td>
         </tr>
     </c:if>
     <c:if test="${!(task.dueDate == null)}">
         <tr>
-            <td>Task dueDate: ${task.dueDate}</td>
+            <td>Task dueDate:
+                <input type="button" id="viewDate" value="${task.dueDate}"
+                       style="border: none; background: none">
+                <input type="date" id="editDate"
+                       value="${task.dueDate}" style="display: none"></td>
         </tr>
     </c:if>
     <tr>
@@ -43,7 +58,8 @@
                     <input type="button" id="msgView${message.id}" value="${message.messageBody}"
                            style="border: none; background: none">
                     <input type="text" id="msgEdit${message.id}"
-                           onkeydown="if (event.keyCode == 13) saveMessage(${message.id})" value="${message.messageBody}"
+                           onkeydown="if (event.keyCode == 13) saveMessage(${message.id})"
+                           value="${message.messageBody}"
                            style="display: none">
                 </td>
 
