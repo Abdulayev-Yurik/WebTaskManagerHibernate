@@ -28,4 +28,10 @@ public class MessageController {
         messageService.createMessage(taskId, messageBody);
         return "redirect:/details?taskId=" + taskId;
     }
+
+    @RequestMapping(value = "", method = RequestMethod.PATCH)
+    void updateMessage(@RequestParam("id")String id,
+                       @RequestParam("msg")String message){
+        messageService.updateMessage(id, message);
+    }
 }

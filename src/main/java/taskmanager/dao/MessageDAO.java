@@ -41,4 +41,13 @@ public class MessageDAO {
         Message message = (Message) criteria.uniqueResult();
         session.delete(message);
     }
+
+    public void updateMessage(int id, String messageBody) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Message.class)
+                .add(eq("id", id));
+        Message message = (Message) criteria.uniqueResult();
+        message.setMessageBody(messageBody);
+        session.save(message);
+    }
 }

@@ -4,8 +4,10 @@
 <head>
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="/resources/js/lib/jquery-2.1.0.min.js"></script>
     <script src="/resources/js/main.js"></script>
+    <script src="/resources/js/details_task.js"></script>
 </head>
 <body>
 <a href="/home">Back</a>
@@ -28,12 +30,32 @@
             <td>Task dueDate: ${task.dueDate}</td>
         </tr>
     </c:if>
-    <tr><td>Task from : ${task.listTasks.listName} </td></tr>
+    <tr>
+        <td>Task from : ${task.listTasks.listName} </td>
+    </tr>
     <c:if test="${task.messagesValues != 0}">
-        <tr><td>Task messages:</td></tr>
+        <tr>
+            <td>Task messages:</td>
+        </tr>
         <c:forEach items="${task.messages}" var="message">
             <tr>
-                <td>${message.messageBody}</td>
+                <td>
+                    <input type="button" id="msgView${message.id}" value="${message.messageBody}"
+                           style="border: none; background: none">
+                    <input type="text" id="msgEdit${message.id}"
+                           onkeydown="if (event.keyCode == 13) saveMessage(${message.id})" value="${message.messageBody}"
+                           style="display: none">
+                </td>
+
+                <td>
+                    <i id="editIcon${message.id}" class="fa fa-pencil-square-o" style="color: orange"
+                       onclick="viewEditMessage(${message.id})"
+                       aria-hidden="true"></i>
+
+                    <i id="saveIcon${message.id}" class="fa fa-floppy-o" style="color: green; display: none"
+                       onclick="saveMessage(${message.id})"
+                       aria-hidden="true"></i>
+                </td>
                 <td>
                     <a href="" onclick="deleteMessage(${message.id}, ${task.taskId})">
                         <i class="material-icons" style="color: red; font-size:20px">delete_forever</i>
