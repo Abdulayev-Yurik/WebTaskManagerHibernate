@@ -24,6 +24,4 @@ function saveMessage(id) {
         type: "PATCH",
         url: "/message?id="+ id + "&msg=" + editor.value
     })
-
-
 }
