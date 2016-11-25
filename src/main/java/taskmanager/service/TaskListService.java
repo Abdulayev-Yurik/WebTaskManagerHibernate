@@ -28,4 +28,8 @@ public class TaskListService {
     public void deleteList(String listId) {
         taskListDAO.deleteTaskList(listId);
     }
+
+    public void updateTaskList(String listId, String listName) {
+        taskListDAO.updateTaskList(listId, listName);
+    }
 }

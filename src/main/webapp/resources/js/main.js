@@ -11,7 +11,7 @@ function deleteTask(taskId) {
 
 function deleteTaskList(id) {
     $.ajax({
-        async:false,
+        async: false,
         type: "DELETE",
         url: "/taskList?listId=" + id
     })
@@ -19,7 +19,7 @@ function deleteTaskList(id) {
 
 function deleteMessage(messageId, taskId) {
     $.ajax({
-        async:false,
+        async: false,
         type: "DELETE",
         url: "/message?messageId=" + messageId + "&taskId=" + taskId
     })
@@ -27,8 +27,33 @@ function deleteMessage(messageId, taskId) {
 
 function switchStatusTask(taskId, status) {
     $.ajax({
-        async:false,
+        async: false,
         type: "PUT",
         url: "/task/switch?taskId=" + taskId + "&active=" + status
     })
+}
+
+function viewTaskListEdit(id) {
+    document.getElementById('linkList' + id).style.display = 'none';
+    document.getElementById('editIcon' + id).style.display = 'none';
+    document.getElementById('editList' + id).style.display = 'block';
+    document.getElementById('saveIcon' + id).style.display = 'block';
+}
+
+function saveTaskList(id) {
+    document.getElementById('editIcon' + id).style.display = 'block';
+    document.getElementById('saveIcon' + id).style.display = 'none';
+    var link = document.getElementById('linkList' + id);
+    var input = document.getElementById('editList' + id);
+    input.style.display = 'none';
+    link.style.display = 'block';
+
+    document.getElementById('linkListValue' + id).value = input.value;
+
+    $.ajax({
+        async: false,
+        type: "PATCH",
+        url: "/taskList?listId=" + id + "&listName=" + input.value,
+        onerror: alert("Error")
+    });
 }

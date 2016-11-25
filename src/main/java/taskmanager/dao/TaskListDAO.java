@@ -45,4 +45,13 @@ public class TaskListDAO {
         }
         session.delete(taskLists);
     }
+
+    public void updateTaskList(String listId, String listName) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(TaskList.class)
+                .add(eq("id", parseInt(listId)));
+        TaskList taskList = (TaskList) criteria.uniqueResult();
+        taskList.setListName(listName);
+        session.update(taskList);
+    }
 }

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <link rel="stylesheet" href="/resources/css/mystyle.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="/resources/js/lib/jquery-2.1.0.min.js"></script>
     <script src="/resources/js/main.js"></script>

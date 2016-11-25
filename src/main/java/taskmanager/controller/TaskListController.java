@@ -38,4 +38,10 @@ public class TaskListController {
         return "task_list";
     }
 
+    @RequestMapping(value = "", method = RequestMethod.PATCH)
+    void updateList(@RequestParam("listId")String listId,
+                    @RequestParam("listName")String listName){
+        taskListService.updateTaskList(listId, listName);
+    }
+
 }
