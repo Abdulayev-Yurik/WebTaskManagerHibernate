@@ -27,3 +27,4 @@ public class ParserUri {
         return uri.getUserInfo().split(":")[1];
     }
 }
+//postgres://postgres:root@localhost:5432/task_manager_db

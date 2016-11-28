@@ -32,14 +32,14 @@ public class HibernateConfig {
 		}
 	};
 
-	@Value("${connection.url}")
-	String dbUrl;
-
-	@Value("${connection.username}")
-	String dbUser;
-
-	@Value("${connection.password}")
-	String dbPass;
+//	@Value("${connection.url}")
+//	String dbUrl;
+//
+//	@Value("${connection.username}")
+//	String dbUser;
+//
+//	@Value("${connection.password}")
+//	String dbPass;
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -48,7 +48,7 @@ public class HibernateConfig {
 
 	@Bean
 	public ParserUri uri() throws URISyntaxException {
-		return new ParserUri(System.getenv("DB_URL"));
+		return new ParserUri(System.getenv("DATABASE_URL"));
 	}
 
 	@Bean
