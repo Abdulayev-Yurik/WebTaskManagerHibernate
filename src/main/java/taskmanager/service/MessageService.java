@@ -19,11 +19,11 @@ public class MessageService {
         messageDAO.deleteMessage(mId);
     }
 
-    public void createMessage(String taskId, String messageText){
+    public void createMessage(int taskId, String messageText){
         messageDAO.addNewMessage(taskId, messageText);
     }
 
-    public void updateMessage(String id, String message) {
-        messageDAO.updateMessage(parseInt(id), message);
+    public void updateMessage(Integer id, String message) {
+        messageDAO.updateMessage(id, message);
     }
 }

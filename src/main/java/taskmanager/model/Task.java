@@ -14,7 +14,7 @@ public class Task {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String taskId;
+    private int taskId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "listId", insertable = false, updatable = false )
@@ -29,7 +29,7 @@ public class Task {
     @Column(name = "due_date")
     private String dueDate;
 
-    @Column(name = "isActive", columnDefinition = "true")
+    @Column(name = "isActive")
     private Boolean isActive;
 
     @Column(name = "listId")
@@ -38,20 +38,20 @@ public class Task {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
     private List<Message> messages = new ArrayList();
 
-    public Task(String taskId, String taskTitle) {
+    public Task(int taskId, String taskTitle) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         isActive = true;
     }
 
-    public Task(String taskId, String taskTitle, String details, boolean isActive) {
+    public Task(int taskId, String taskTitle, String details, boolean isActive) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.details = details;
         this.isActive = isActive;
     }
 
-    public Task(String taskId, String taskTitle, String details, boolean isActive, int listId) {
+    public Task(int taskId, String taskTitle, String details, boolean isActive, int listId) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.details = details;
@@ -59,7 +59,7 @@ public class Task {
         this.listId = listId;
     }
 
-    public Task(String taskTitle, String details, boolean isActive, Integer listId) {
+    public Task(String taskTitle, String details, boolean isActive, int listId) {
         this.taskTitle = taskTitle;
         this.details = details;
         this.isActive = isActive;
@@ -77,7 +77,7 @@ public class Task {
         this.isActive = isActive;
     }
 
-    @Column(name = "title")
+//    @Column(name = "title")
     public String getTaskTitle() {
         return taskTitle;
     }
@@ -90,12 +90,12 @@ public class Task {
         return messages.size();
     }
 
-    @Column(name = "id")
-    public String getTaskId() {
+//    @Column(name = "id")
+    public int getTaskId() {
         return taskId;
     }
 
-    @Column(name = "details")
+//    @Column(name = "details")
     public String getDetails() {
         return details;
     }
@@ -104,7 +104,7 @@ public class Task {
         this.details = details;
     }
 
-    @Column(name = "isActive", columnDefinition = "tinyint default true")
+//    @Column(name = "isActive")
     public boolean isActive() {
         return isActive;
     }

@@ -18,19 +18,19 @@ public class MessageController {
     MessageService messageService;
 
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    String deleteMessage(@RequestParam("messageId")String mId, @RequestParam("taskId")String taskId){
+    String deleteMessage(@RequestParam("messageId")String mId, @RequestParam("taskId")Integer taskId){
         messageService.deleteMessage(mId);
         return "redirect:/details?taskId=" + taskId;
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    String createMessage(@RequestParam("taskId")String taskId, @RequestParam("mBody")String messageBody){
+    String createMessage(@RequestParam("taskId")Integer taskId, @RequestParam("mBody")String messageBody){
         messageService.createMessage(taskId, messageBody);
         return "redirect:/details?taskId=" + taskId;
     }
 
     @RequestMapping(value = "", method = RequestMethod.PATCH)
-    void updateMessage(@RequestParam("id")String id,
+    void updateMessage(@RequestParam("id")Integer id,
                        @RequestParam("msg")String message){
         messageService.updateMessage(id, message);
     }

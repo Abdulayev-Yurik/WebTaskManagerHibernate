@@ -24,9 +24,9 @@ public class MessageDAO {
     @Autowired
     SessionFactory sessionFactory;
 
-    public void addNewMessage(String taskId, String messageText) {
+    public void addNewMessage(int taskId, String messageText) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Message message = new Message(parseInt(taskId), messageText);
+        Message message = new Message(taskId, messageText);
         currentSession.save(message);
         Task task = (Task) currentSession.createCriteria(Task.class)
                 .add(eq("id", taskId))

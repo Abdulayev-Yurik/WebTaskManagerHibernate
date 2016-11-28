@@ -19,7 +19,7 @@ public class DetailsController {
     TaskService taskService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    String viewDetails(@RequestParam("taskId")String taskId, ModelMap modelMap){
+    String viewDetails(@RequestParam("taskId")Integer taskId, ModelMap modelMap){
         modelMap.addAttribute("task", taskService.getTaskById(taskId));
         return "details";
     }

@@ -47,14 +47,14 @@ public class TaskDAO {
         sessionFactory.getCurrentSession().save(task);
     }
 
-    public void deleteTask(String taskId) {
+    public void deleteTask(int taskId) {
         Session currentSession = sessionFactory.getCurrentSession();
         Task task = (Task) currentSession.createCriteria(Task.class)
                 .add(eq("id", taskId)).uniqueResult();
         currentSession.delete(task);
     }
 
-    public void switchStatusTask(String taskId, boolean isActive) {
+    public void switchStatusTask(int taskId, boolean isActive) {
         Session currentSession = sessionFactory.getCurrentSession();
         Task task = (Task) currentSession.createCriteria(Task.class)
                 .add(eq("id", taskId)).uniqueResult();
@@ -62,7 +62,7 @@ public class TaskDAO {
         currentSession.update(task);
     }
 
-    public Task getTaskById(String taskId) {
+    public Task getTaskById(int taskId) {
         Task task = (Task) sessionFactory.getCurrentSession()
                 .createCriteria(Task.class)
                 .add(eq("id", taskId))
@@ -70,7 +70,7 @@ public class TaskDAO {
         return task;
     }
 
-    private List<Message> getTaskMessages(String taskId) {
+    private List<Message> getTaskMessages(int taskId) {
         Task task = (Task) sessionFactory.getCurrentSession()
                 .createCriteria(Task.class)
                 .add(eq("id", taskId))
@@ -78,7 +78,7 @@ public class TaskDAO {
         return task.getMessages();
     }
 
-    public void updateTask(String id, String title, String det, String dueDate) {
+    public void updateTask(int id, String title, String det, String dueDate) {
         Session session = sessionFactory.getCurrentSession();
         Task task = (Task) session.createCriteria(Task.class).add(eq("id", id)).uniqueResult();
         task.setTaskTitle(title);

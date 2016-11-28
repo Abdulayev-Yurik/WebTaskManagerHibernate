@@ -18,11 +18,11 @@ import java.util.Properties;
 @PropertySource("classpath:hibernate.properties")
 public class HibernateConfig {
 
-	static final String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+	static final String DRIVER_CLASS_NAME = "org.postgresql.Driver";
 
 	static final Properties hibernateProperties = new Properties() {
 		{
-			setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+			setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			setProperty("hibernate.hbm2ddl.auto", "update");
 			setProperty("hibernate.show_sql", "true");
 			setProperty("hibernate.current_session_context_class", "org.springframework.orm.hibernate4.SpringSessionContext");

@@ -46,20 +46,20 @@ public class TaskController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    String deleteTask(@RequestParam("taskId") String taskId) {
+    String deleteTask(@RequestParam("taskId") Integer taskId) {
         taskService.deleteTask(taskId);
         return "redirect:/home";
     }
 
     @RequestMapping(value = "/switch", method = RequestMethod.PUT)
-    String switchTask(@RequestParam("taskId") String taskId,
+    String switchTask(@RequestParam("taskId") Integer taskId,
                       @RequestParam("active") Boolean status) {
         taskService.switchTaskActivity(taskId, status);
         return "redirect:/home";
     }
 
     @RequestMapping(value = "", method = RequestMethod.PATCH)
-    void updateTask(@RequestParam("id")String id,
+    void updateTask(@RequestParam("id")Integer id,
                     @RequestParam("title")String title,
                     @RequestParam("details")String det,
                     @RequestParam("date")String dueDate){

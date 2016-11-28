@@ -62,19 +62,19 @@ public class TaskService {
         taskDAO.addNewTask(title, details, listId, dueDate);
     }
 
-    public void deleteTask(String taskId) {
+    public void deleteTask(int taskId) {
         taskDAO.deleteTask(taskId);
     }
 
-    public void switchTaskActivity(String taskId, boolean status) {
+    public void switchTaskActivity(int taskId, boolean status) {
         taskDAO.switchStatusTask(taskId, !status);
     }
 
-    public Task getTaskById(String taskId) {
+    public Task getTaskById(int taskId) {
         return taskDAO.getTaskById(taskId);
     }
 
-    public void updateTask(String id, String title, String det, String dueDate) {
+    public void updateTask(int id, String title, String det, String dueDate) {
         taskDAO.updateTask(id, title, det, dueDate);
     }
 }
