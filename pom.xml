@@ -229,7 +229,7 @@
 					<appendAssemblyId>false</appendAssemblyId>
 					<archive>
 						<manifest>
-							<mainClass>App</mainClass>
+							<mainClass>src.main.taskmanager.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
