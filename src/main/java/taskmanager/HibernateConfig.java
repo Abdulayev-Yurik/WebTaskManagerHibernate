@@ -71,9 +71,10 @@ public class HibernateConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = null;
 		try {
-			dataSource = new DriverManagerDataSource(uri().getJDBCUrl(),
-					uri().getLogin(),
-					uri().getPassword());
+			ParserUri parser = uri();
+			dataSource = new DriverManagerDataSource(parser.getJDBCUrl(),
+					parser.getLogin(),
+					parser.getPassword());
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
