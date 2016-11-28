@@ -227,11 +227,6 @@
 					</descriptorRefs>
 					<finalName>helloworld</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
-					<archive>
-						<manifest>
-							<mainClass>taskmanager.App</mainClass>
-						</manifest>
-					</archive>
 				</configuration>
 				<executions>
 					<execution>
