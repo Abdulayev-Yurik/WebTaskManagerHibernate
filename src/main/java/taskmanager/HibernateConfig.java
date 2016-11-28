@@ -9,8 +9,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import taskmanager.utils.ParserUri;
 
 import javax.sql.DataSource;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 @Configuration
@@ -44,6 +47,11 @@ public class HibernateConfig {
 	}
 
 	@Bean
+	public ParserUri uri() throws URISyntaxException {
+		return new ParserUri(System.getenv("DB_URL"));
+	}
+
+	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
@@ -61,7 +69,14 @@ public class HibernateConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource(dbUrl, dbUser, dbPass);
+		DriverManagerDataSource dataSource = null;
+		try {
+			dataSource = new DriverManagerDataSource(uri().getJDBCUrl(),
+					uri().getLogin(),
+					uri().getPassword());
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 		dataSource.setDriverClassName( DRIVER_CLASS_NAME );
 		return dataSource;
 	}
