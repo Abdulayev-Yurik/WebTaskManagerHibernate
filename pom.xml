@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>myApp</groupId>
     <artifactId>spring</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <version>1.0</version>
     <name>spring</name>
 
