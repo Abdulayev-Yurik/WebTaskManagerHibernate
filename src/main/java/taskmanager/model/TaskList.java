@@ -1,6 +1,10 @@
 package taskmanager.model;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +24,7 @@ public class TaskList {
     private String listName;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "listTasks")
+    @Cascade({org.hibernate.annotations.CascadeType.DELETE})
     private List<Task> tasks = new ArrayList();
 
     public TaskList(int id, String listName) {

@@ -1,6 +1,11 @@
 package taskmanager.model;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +41,7 @@ public class Task {
     private Integer listId;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
+    @Cascade({CascadeType.DELETE})
     private List<Message> messages = new ArrayList();
 
     public Task(int taskId, String taskTitle) {
