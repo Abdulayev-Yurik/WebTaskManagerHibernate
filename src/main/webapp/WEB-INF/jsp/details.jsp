@@ -18,11 +18,14 @@
 </form>
 <input type="submit" id="config_btn" value="Edit inf" onclick="viewEditTask(${task.taskId})">
 <input type="submit" value="Save inf" onclick="saveEditedTask(${task.taskId})">
-<table>
+<table class="taskListPage card-1">
+    <tr></tr>
+    <tr></tr>
+    <tr><h2>Task Details</h2></tr>
     <tr>
         <td><label>Task title:</label></td>
         <td>
-            <input type="button" id="viewT" value="${task.taskTitle}"
+            <input type="text" id="viewT" value="${task.taskTitle}" size="${task.taskTitle.length()}"
                    style="border: none; background: none">
             <input type="text" id="editT"
                    value="${task.taskTitle}" style="display: none">

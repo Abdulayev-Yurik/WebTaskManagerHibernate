@@ -18,6 +18,10 @@ td {
     padding: 10px;
 }
 
+table {
+    margin: 0 auto;
+}
+
 input, select , textarea {
     margin: 10px;
     padding: 5px;
@@ -60,6 +64,23 @@ input[type=submit] {
 
 .page {
     width: 80%;
+}
+
+.createTaskLis{
+    border: 0 solid darkgray;
+    border-radius: 10px;
+    width: 400px;
+    float: right;
+    background-color: #B0E0E6;
+    margin: 20px auto 0;
+}
+
+.taskListPage {
+    border: 0 solid darkgray;
+    border-radius: 10px;
+    background-color: #FAFAD2;
+    width: 40%;
+    margin: 20px auto 0;
 }
 
 h2{
