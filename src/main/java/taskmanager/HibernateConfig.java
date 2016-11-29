@@ -27,7 +27,7 @@ public class HibernateConfig {
 		{
 			setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			setProperty("hibernate.hbm2ddl.auto", "update");
-			setProperty("hibernate.show_sql", "true");
+			setProperty("hibernate.show_sql", "false");
 			setProperty("hibernate.current_session_context_class", "org.springframework.orm.hibernate4.SpringSessionContext");
 		}
 	};
