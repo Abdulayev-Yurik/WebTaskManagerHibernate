@@ -53,7 +53,6 @@ function saveTaskList(id) {
     $.ajax({
         async: false,
         type: "PATCH",
-        url: "/taskList?listId=" + id + "&listName=" + input.value,
-        onerror: alert("Error")
+        url: "/taskList?listId=" + id + "&listName=" + input.value
     });
 }

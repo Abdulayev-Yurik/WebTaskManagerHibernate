@@ -10,11 +10,7 @@
 </head>
 <body>
 <a href="/home">Back</a>
-<form action="/taskList" method="post">
-    <input type="text" name="title" placeholder="List name" required><br>
-    <input type="submit" value="Add List"><br>
-</form>
-<div class="activeList card-1">
+<div class="card-1 taskListPage">
     <table>
         <tr></tr>
         <tr></tr>
@@ -22,7 +18,8 @@
         <c:forEach items="${taskLists}" var="taskList">
             <tr>
                 <td><a id="linkList${taskList.id}" href="/home/${taskList.id}">
-                    <input id="linkListValue${taskList.id}" type="button" value="${taskList.listName}" style="background: none; border: none">
+                    <input id="linkListValue${taskList.id}" type="button" value="${taskList.listName}"
+                           style="background: none; border: none">
                 </a>
 
                     <input id="editList${taskList.id}" type="text" value="${taskList.listName}"
@@ -43,6 +40,11 @@
         </c:forEach>
     </table>
 </div>
-
+<div class="createTaskLis card-1">
+    <form action="/taskList" method="post">
+        <input type="text" name="title" placeholder="List name" required><br>
+        <input type="submit" value="Add List"><br>
+    </form>
+</div>
 </body>
 </html>

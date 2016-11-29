@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
     <script src="/resources/js/lib/jquery-2.1.0.min.js"></script>
     <script src="/resources/js/main.js"></script>
 </head>
