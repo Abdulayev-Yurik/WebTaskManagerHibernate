@@ -29,14 +29,14 @@ public class TaskController {
     @Autowired
     MessageService messageService;
 
-    @RequestMapping("")
+    @RequestMapping()
     String createTask(ModelMap modelMap) {
         List<TaskList> taskLists = taskListService.getAllListTasks();
         modelMap.addAttribute("lists", taskLists);
         return "add_task";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     String createTask(@RequestParam("title") String title,
                       @RequestParam("details") String details,
                       @RequestParam("listId") Integer listId,
@@ -52,6 +52,7 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/switch", method = RequestMethod.PUT)
+        // FIXME: 11/29/16 /tasks/{id}/status
     String switchTask(@RequestParam("taskId") Integer taskId,
                       @RequestParam("active") Boolean status) {
         taskService.switchTaskActivity(taskId, status);
