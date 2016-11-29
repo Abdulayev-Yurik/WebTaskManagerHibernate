@@ -20,7 +20,8 @@
 <input type="submit" value="Save inf" onclick="saveEditedTask(${task.taskId})">
 <table>
     <tr>
-        <td>Task title:
+        <td><label>Task title:</label></td>
+        <td>
             <input type="button" id="viewT" value="${task.taskTitle}"
                    style="border: none; background: none">
             <input type="text" id="editT"
@@ -29,28 +30,32 @@
     </tr>
     <c:if test="${!task.details.isEmpty()}">
         <tr>
-            <td>Task details:
+            <td><label>Task details:</label></td>
+            <td>
                 <input type="button" id="viewD" value="${task.details}"
                        style="border: none; background: none">
                 <input type="text" id="editD"
-                       value="${task.details}" style="display: none"></td>
+                       value="${task.details}" style="display: none">
+            </td>
         </tr>
     </c:if>
     <c:if test="${!(task.dueDate == null)}">
         <tr>
-            <td>Task dueDate:
+            <td><label>Task deadLine:</label></td>
+            <td>
                 <input type="button" id="viewDate" value="${task.dueDate}"
                        style="border: none; background: none">
                 <input type="date" id="editDate"
-                       value="${task.dueDate}" style="display: none"></td>
+                       value="${task.dueDate}" style="display: none">
+            </td>
         </tr>
     </c:if>
     <tr>
-        <td>Task from : ${task.listTasks.listName} </td>
+        <td><label>Task from : </label></td><td>${task.listTasks.listName} </td>
     </tr>
     <c:if test="${task.messagesValues != 0}">
         <tr>
-            <td>Task messages:</td>
+            <td><label>Task messages:</label></td>
         </tr>
         <c:forEach items="${task.messages}" var="message">
             <tr>

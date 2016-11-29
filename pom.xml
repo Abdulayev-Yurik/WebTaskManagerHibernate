@@ -9,7 +9,7 @@
     <name>spring</name>
 
     <build>
-        <finalName>embeddedTomcatSample</finalName>
+        <finalName>TaskManager</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
