@@ -66,8 +66,8 @@ public class TaskService {
         taskDAO.deleteTask(taskId);
     }
 
-    public void switchTaskActivity(int taskId, boolean status) {
-        taskDAO.switchStatusTask(taskId, !status);
+    public void switchTaskActivity(int taskId) {
+        taskDAO.switchStatusTask(taskId);
     }
 
     public Task getTaskById(int taskId) {

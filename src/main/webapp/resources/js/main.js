@@ -29,7 +29,7 @@ function switchStatusTask(taskId, status) {
     $.ajax({
         async: false,
         type: "PUT",
-        url: "/task/switch?taskId=" + taskId + "&active=" + status
+        url: "/task/" + taskId + "/status/" + status
     })
 }
 

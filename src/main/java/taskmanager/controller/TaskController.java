@@ -3,6 +3,7 @@ package taskmanager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,11 +52,9 @@ public class TaskController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value = "/switch", method = RequestMethod.PUT)
-        // FIXME: 11/29/16 /tasks/{id}/status
-    String switchTask(@RequestParam("taskId") Integer taskId,
-                      @RequestParam("active") Boolean status) {
-        taskService.switchTaskActivity(taskId, status);
+    @RequestMapping(value = "/{taskId}/status/{status}", method = RequestMethod.PUT)
+    String switchStatusTask(@PathVariable("taskId") Integer taskId) {
+        taskService.switchTaskActivity(taskId);
         return "redirect:/home";
     }
 

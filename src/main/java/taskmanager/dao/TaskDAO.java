@@ -54,11 +54,11 @@ public class TaskDAO {
         currentSession.delete(task);
     }
 
-    public void switchStatusTask(int taskId, boolean isActive) {
+    public void switchStatusTask(int taskId) {
         Session currentSession = sessionFactory.getCurrentSession();
         Task task = (Task) currentSession.createCriteria(Task.class)
                 .add(eq("id", taskId)).uniqueResult();
-        task.setActive(isActive);
+        task.setActive(!task.isActive());
         currentSession.update(task);
     }
 
