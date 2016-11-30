@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link rel="shortcut icon" type="image/ico" href="/resources/img/favicon-tasks.ico"/>
     <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>

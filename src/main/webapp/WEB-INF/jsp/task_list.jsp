@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <link rel="shortcut icon" type="image/ico" href="/resources/img/favicon-tasks.ico"/>
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="/resources/js/lib/jquery-2.1.0.min.js"></script>
