@@ -19,7 +19,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>taskmanager.App</mainClass>
+                            <mainClass>App</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>

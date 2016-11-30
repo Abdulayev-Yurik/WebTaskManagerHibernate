@@ -1,5 +1,3 @@
-package taskmanager;
-
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.WebResourceSet;
 import org.apache.catalina.core.StandardContext;
