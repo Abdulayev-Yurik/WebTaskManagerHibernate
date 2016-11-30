@@ -5,6 +5,8 @@
 <html>
 <head>
     <link rel="shortcut icon" type="image/ico" href="/resources/img/favicon-tasks.ico"/>
+    <title>Task manager InCamp</title>
+
     <link rel="stylesheet" href="/resources/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
