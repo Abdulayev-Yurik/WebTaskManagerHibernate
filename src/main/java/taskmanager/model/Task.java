@@ -35,7 +35,7 @@ public class Task {
     private String dueDate;
 
     @Column(name = "isActive")
-    private Boolean isActive;
+    private Boolean status;
 
     @Column(name = "listId")
     private Integer listId;
@@ -47,40 +47,40 @@ public class Task {
     public Task(int taskId, String taskTitle) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
-        isActive = true;
+        status = true;
     }
 
-    public Task(int taskId, String taskTitle, String details, boolean isActive) {
+    public Task(int taskId, String taskTitle, String details, boolean status) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.details = details;
-        this.isActive = isActive;
+        this.status = status;
     }
 
-    public Task(int taskId, String taskTitle, String details, boolean isActive, int listId) {
+    public Task(int taskId, String taskTitle, String details, boolean status, int listId) {
         this.taskId = taskId;
         this.taskTitle = taskTitle;
         this.details = details;
-        this.isActive = isActive;
+        this.status = status;
         this.listId = listId;
     }
 
-    public Task(String taskTitle, String details, boolean isActive, int listId) {
+    public Task(String taskTitle, String details, boolean status, int listId) {
         this.taskTitle = taskTitle;
         this.details = details;
-        this.isActive = isActive;
+        this.status = status;
         this.listId = listId;
     }
 
     public Task() {
     }
 
-    public Task(String title, String details, int listId, String dueDate, boolean isActive) {
+    public Task(String title, String details, int listId, String dueDate, boolean status) {
         this.taskTitle = title;
         this.details = details;
         this.listId = listId;
         this.dueDate = dueDate;
-        this.isActive = isActive;
+        this.status = status;
     }
 
 //    @Column(name = "title")
@@ -110,13 +110,13 @@ public class Task {
         this.details = details;
     }
 
-//    @Column(name = "isActive")
-    public boolean isActive() {
-        return isActive;
+//    @Column(name = "status")
+    public boolean getStatus() {
+        return status;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public List<Message> getMessages() {

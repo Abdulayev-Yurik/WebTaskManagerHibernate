@@ -58,7 +58,7 @@ public class TaskDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         Task task = (Task) currentSession.createCriteria(Task.class)
                 .add(eq("id", taskId)).uniqueResult();
-        task.setActive(!task.isActive());
+        task.setStatus(!task.getStatus());
         currentSession.update(task);
     }
 

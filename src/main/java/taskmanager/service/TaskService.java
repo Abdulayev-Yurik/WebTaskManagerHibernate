@@ -26,7 +26,7 @@ public class TaskService {
 
         List<Task> tasks = taskDAO.getAllTasks();
         for (Task task : tasks) {
-            if (task.isActive()) {
+            if (task.getStatus()) {
                 taskActiveList.add(task);
             } else {
                 taskDoneList.add(task);
@@ -46,7 +46,7 @@ public class TaskService {
 
         List<Task> tasks = taskDAO.getTasksFromList(listId);
         for (Task task : tasks) {
-            if (task.isActive()) {
+            if (task.getStatus()) {
                 taskActiveList.add(task);
             } else {
                 taskDoneList.add(task);

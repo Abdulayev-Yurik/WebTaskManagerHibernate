@@ -32,9 +32,9 @@
                         <td>
                                 ${task.taskTitle}
                         </td>
-                        <c:if test="${task.active}">
+                        <c:if test="${task.status}">
                             <td title="close task">
-                                <a href="" onclick="switchStatusTask(${task.taskId}, ${task.active})">
+                                <a href="" onclick="switchStatusTask(${task.taskId}, ${task.status})">
                                     <i class="material-icons" style="font-size:20px; color: orange">done_all</i>
                                 </a>
                             </td>
@@ -65,9 +65,9 @@
                         <td>
                                 ${task.taskTitle}
                         </td>
-                        <c:if test="${!task.active}">
+                        <c:if test="${!task.status}">
                             <td title="reopen task">
-                                <a href="" onclick="switchStatusTask(${task.taskId}, ${task.active})">
+                                <a href="" onclick="switchStatusTask(${task.taskId}, ${task.status})">
                                     <i class="material-icons"
                                        style="font-size:20px; color: orange">add_to_queue</i>
                                 </a>
