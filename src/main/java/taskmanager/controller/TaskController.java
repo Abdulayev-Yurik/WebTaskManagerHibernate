@@ -66,5 +66,11 @@ public class TaskController {
         taskService.updateTask(id, title, det, dueDate);
     }
 
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    String viewDetails(@PathVariable("id")Integer taskId, ModelMap modelMap){
+        modelMap.addAttribute("task", taskService.getTaskById(taskId));
+        return "details";
+    }
+
 
 }

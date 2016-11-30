@@ -40,7 +40,7 @@
                             </td>
                         </c:if>
                         <td>
-                            <a href="/details?taskId=${task.taskId}">
+                            <a href="/task/details/${task.taskId}">
                                 <i class="material-icons" style="color: green; font-size:14px">announcement</i>
                                     ${task.messagesValues}</a>
                         </td>
@@ -74,7 +74,7 @@
                             </td>
                         </c:if>
                         <td>
-                            <a href="/details?taskId=${task.taskId}">
+                            <a href="/task/details/${task.taskId}">
                                 <i class="material-icons" style="color: green; font-size:14px">announcement</i>
                                     ${task.messagesValues}</a>
                         </td>
