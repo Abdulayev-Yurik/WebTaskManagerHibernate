@@ -42,35 +42,7 @@ public class Task {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "task")
     @Cascade({CascadeType.DELETE})
-    private List<Message> messages = new ArrayList();
-
-    public Task(int taskId, String taskTitle) {
-        this.taskId = taskId;
-        this.taskTitle = taskTitle;
-        status = true;
-    }
-
-    public Task(int taskId, String taskTitle, String details, boolean status) {
-        this.taskId = taskId;
-        this.taskTitle = taskTitle;
-        this.details = details;
-        this.status = status;
-    }
-
-    public Task(int taskId, String taskTitle, String details, boolean status, int listId) {
-        this.taskId = taskId;
-        this.taskTitle = taskTitle;
-        this.details = details;
-        this.status = status;
-        this.listId = listId;
-    }
-
-    public Task(String taskTitle, String details, boolean status, int listId) {
-        this.taskTitle = taskTitle;
-        this.details = details;
-        this.status = status;
-        this.listId = listId;
-    }
+    private List<Message> messages;
 
     public Task() {
     }
@@ -83,7 +55,6 @@ public class Task {
         this.status = status;
     }
 
-//    @Column(name = "title")
     public String getTaskTitle() {
         return taskTitle;
     }
@@ -96,12 +67,10 @@ public class Task {
         return messages.size();
     }
 
-//    @Column(name = "id")
     public int getTaskId() {
         return taskId;
     }
 
-//    @Column(name = "details")
     public String getDetails() {
         return details;
     }
@@ -110,7 +79,6 @@ public class Task {
         this.details = details;
     }
 
-//    @Column(name = "status")
     public boolean getStatus() {
         return status;
     }
