@@ -1,9 +1,10 @@
-package rest.taskmanager;
+package rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import taskmanager.model.Task;
 import taskmanager.service.TaskService;
 
@@ -12,13 +13,14 @@ import taskmanager.service.TaskService;
  */
 @Controller
 @RequestMapping("/api/task")
-public class TaskController {
+public class TaskRestController {
 
     @Autowired
     TaskService taskService;
 
     @RequestMapping("/{taskId}")
-    Task getTask(@PathVariable("taskId") Integer id){
+    @ResponseBody
+    Task getTask(@PathVariable("taskId") Integer id) {
         return taskService.getTaskById(id);
     }
 

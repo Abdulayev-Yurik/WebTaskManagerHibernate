@@ -1,11 +1,8 @@
-package rest.taskmanager;
+package rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import taskmanager.service.MessageService;
 
 /**
@@ -19,19 +16,22 @@ public class MessageRestController {
     MessageService messageService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
     String deleteMessage(@PathVariable()Integer id) {
         messageService.deleteMessage(id);
         return "";
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
     String createMessage(@RequestParam("taskId")Integer taskId, @RequestParam("mBody")String messageBody){
         messageService.createMessage(taskId, messageBody);
         return "";
     }
 
     @RequestMapping(method = RequestMethod.PATCH)
-    String updateMessage(@RequestParam("id")Integer id,
+    @ResponseBody
+    String updateMessage(@RequestParam("id") Integer id,
                          @RequestParam("msg")String message){
         messageService.updateMessage(id, message);
         return "";
