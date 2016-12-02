@@ -1,5 +1,7 @@
 package taskmanager.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -20,7 +22,8 @@ public class Message {
     @Column(name = "message_body")
     private String messageBody;
 
-    @ManyToOne(fetch =  FetchType.LAZY)
+    @com.fasterxml.jackson.annotation.JsonIgnore
+    @ManyToOne(fetch =  FetchType.EAGER)
     @JoinColumn(name = "taskId", updatable = false, insertable = false)
     private Task task;
 
