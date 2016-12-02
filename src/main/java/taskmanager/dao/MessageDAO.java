@@ -9,9 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import taskmanager.model.Message;
 import taskmanager.model.Task;
 
-import java.sql.SQLException;
-
-import static java.lang.Integer.parseInt;
 import static org.hibernate.criterion.Restrictions.eq;
 
 /**
@@ -35,9 +32,9 @@ public class MessageDAO {
         currentSession.save(task);
     }
 
-    public void deleteMessage(String messageId) {
+    public void deleteMessage(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Message.class).add(eq("id", parseInt(messageId)));
+        Criteria criteria = session.createCriteria(Message.class).add(eq("id", id));
         Message message = (Message) criteria.uniqueResult();
         session.delete(message);
     }

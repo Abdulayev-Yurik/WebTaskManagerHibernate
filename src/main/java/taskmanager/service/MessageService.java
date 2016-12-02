@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import taskmanager.dao.MessageDAO;
 
-import static java.lang.Integer.parseInt;
-
 /**
  * Created by employee on 11/24/16.
  */
@@ -15,7 +13,7 @@ public class MessageService {
     @Autowired
     MessageDAO messageDAO;
 
-    public void deleteMessage(String mId) {
+    public void deleteMessage(int mId) {
         messageDAO.deleteMessage(mId);
     }
 

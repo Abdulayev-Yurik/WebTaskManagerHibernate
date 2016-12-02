@@ -18,7 +18,7 @@ public class MessageController {
     MessageService messageService;
 
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    String deleteMessage(@RequestParam("messageId")String mId, @RequestParam("taskId")Integer taskId){
+    String deleteMessage(@RequestParam("messageId")Integer mId, @RequestParam("taskId")Integer taskId){
         messageService.deleteMessage(mId);
         return "redirect:/details?taskId=" + taskId;
     }
