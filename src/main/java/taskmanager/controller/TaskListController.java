@@ -32,7 +32,7 @@ public class TaskListController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.DELETE)
-    String deleteMessage(@RequestParam("listId")String listId, ModelMap modelMap){
+    String deleteMessage(@RequestParam("listId")Integer listId, ModelMap modelMap){
         taskListService.deleteList(listId);
         modelMap.addAttribute("taskLists", taskListService.getAllListTasks());
         return "task_list";

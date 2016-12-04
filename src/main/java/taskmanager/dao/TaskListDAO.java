@@ -35,10 +35,10 @@ public class TaskListDAO {
         sessionFactory.getCurrentSession().save(new TaskList(title));
     }
 
-    public void deleteTaskList(String listId) {
+    public void deleteTaskList(Integer id) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(TaskList.class)
-                .add(eq("id", parseInt(listId)));
+                .add(eq("id", id));
         TaskList taskLists = (TaskList) criteria.uniqueResult();
         for (Task task : taskLists.getTasks()) {
             session.delete(task);
@@ -53,5 +53,11 @@ public class TaskListDAO {
         TaskList taskList = (TaskList) criteria.uniqueResult();
         taskList.setListName(listName);
         session.update(taskList);
+    }
+
+    public TaskList getTaskListById(Integer id) {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TaskList.class)
+                .add(eq("id", id));
+        return (TaskList) criteria.uniqueResult();
     }
 }

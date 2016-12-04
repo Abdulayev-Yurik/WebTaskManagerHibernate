@@ -25,11 +25,15 @@ public class TaskListService {
         taskListDAO.createNewList(title);
     }
 
-    public void deleteList(String listId) {
-        taskListDAO.deleteTaskList(listId);
+    public void deleteList(Integer id) {
+        taskListDAO.deleteTaskList(id);
     }
 
     public void updateTaskList(String listId, String listName) {
         taskListDAO.updateTaskList(listId, listName);
+    }
+
+    public TaskList getTaskListById(Integer id) {
+        return taskListDAO.getTaskListById(id);
     }
 }

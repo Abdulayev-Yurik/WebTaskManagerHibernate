@@ -1,12 +1,9 @@
 package taskmanager.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,9 +21,10 @@ public class TaskList {
     @Column(name = "name")
     private String listName;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "listTasks")
     @Cascade({org.hibernate.annotations.CascadeType.DELETE})
-    private List<Task> tasks = new ArrayList();
+    private List<Task> tasks;
 
     public TaskList(int id, String listName) {
         this.id = id;
