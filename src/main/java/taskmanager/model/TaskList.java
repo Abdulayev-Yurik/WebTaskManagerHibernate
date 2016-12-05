@@ -21,7 +21,6 @@ public class TaskList {
     @Column(name = "name")
     private String listName;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "listTasks")
     @Cascade({org.hibernate.annotations.CascadeType.DELETE})
     private List<Task> tasks;
