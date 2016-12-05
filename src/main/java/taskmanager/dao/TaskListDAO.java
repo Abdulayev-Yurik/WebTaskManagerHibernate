@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import taskmanager.model.Message;
 import taskmanager.model.Task;
 import taskmanager.model.TaskList;
 
@@ -28,6 +29,11 @@ public class TaskListDAO {
         Criteria criteria = sessionFactory.getCurrentSession()
                 .createCriteria(TaskList.class);
         List<TaskList> taskLists = (List<TaskList>) criteria.list();
+        for (TaskList taskList : taskLists) {
+            for (Task task : taskList.getTasks()) {
+                task.getDetails();
+            }
+        }
         return taskLists;
     }
 
@@ -58,6 +64,12 @@ public class TaskListDAO {
     public TaskList getTaskListById(Integer id) {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TaskList.class)
                 .add(eq("id", id));
-        return (TaskList) criteria.uniqueResult();
+        TaskList taskList = (TaskList) criteria.uniqueResult();
+            for (Task task : taskList.getTasks()) {
+                for (Message message : task.getMessages()) {
+                    message.getId();
+                }
+            }
+        return taskList;
     }
 }
